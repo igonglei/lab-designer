@@ -1,0 +1,723 @@
+﻿@import "../../../less/common.less";
+
+@panel-padding: 10px;
+@base-bg-color: #001245;
+@hoverBgColor: #07437e;
+@bgColor: fade(@hoverBgColor,90%);
+@imgPath: '../images/';
+@toolbarHeight: 50px;
+@lengendBgColor: rgba(0,33,87,.8);
+@eToolHeight: 40px;
+@main-color: #0af;
+
+div.mxPopupMenu {
+    .nobg;
+    .bgc(@bgColor);
+    .bc(@panel-border-color);
+    .bsd(@base-box-shadow);
+
+    tr.mxPopupMenuItem {
+        .cl;
+    }
+
+    tr.mxPopupMenuItemHover {
+        .bgc(@hoverBgColor);
+    }
+
+    td.mxPopupMenuIcon {
+        .bgc(transparent);
+    }
+
+    td.mxPopupMenuItem {
+        .pr(@base-padding);
+        .fm;
+    }
+}
+
+div.mxTooltip {
+    .bgc(@bgColor);
+    .bc(@base-color);
+    .cl(@base-color);
+    .bsd(@base-box-shadow);
+    .fm;
+}
+
+.labDesigner {
+    background: radial-gradient(circle farthest-side,#0074a5 20%,#026392 40%,@base-bg-color 100%);
+    .size;
+    .por;
+    .bra(4px);
+
+    .lde-designer {
+        .m(0 auto);
+    }
+}
+
+.lde-toolbar {
+    .size(100%,@toolbarHeight);
+    .por;
+}
+
+.lde-tools {
+    .poa;
+    .pos-tr;
+    list-style: none;
+    .m;
+    .pt(@panel-padding);
+    .zi(100);
+    .pr(@panel-padding);
+
+    > li {
+        .show(true);
+        background-image: url("@{imgPath}toolbar.sprite.png");
+        .size(38px,26px);
+        .ml(@panel-padding/2);
+        .border(#003283);
+        .bra(4px);
+        .bgc(#002157);
+        .cursor;
+
+        &:hover {
+            .bgc(#0054a6);
+        }
+
+        &.zoomIn {
+            .bgpy(-187px);
+        }
+
+        &.zoomOut {
+            .bgpy(-217px);
+        }
+
+        &.actualSize {
+            .bgpy(-810px);
+        }
+
+        &.fullsize {
+            .bgpy(-67px);
+        }
+
+        &.move {
+            .bgpy(-97px);
+        }
+
+        &.download {
+            .bgp(-1px -8px);
+        }
+
+        &.edit {
+            .bgp(-1px -497px);
+        }
+
+        &.print {
+            .bgpy(-840px);
+        }
+    }
+}
+
+.lde-tip:extend(.lde-tools) {
+    right: 300px;
+
+    > li {
+        .show(true);
+        .pl(@panel-padding);
+        .fs(@large-font-size);
+        .cl;
+
+        > span {
+            .va;
+        }
+
+        .icon {
+            .show(true);
+            .size(25px,15px);
+            .bra(5px);
+            .mr(5px);
+        }
+
+        .low {
+            .bgc(#22d34e);
+        }
+
+        .middle {
+            .bgc(#e7df21);
+        }
+
+        .high {
+            .bgc(#f6684a);
+        }
+
+        .title {
+            .show(true);
+            .size(20px,20px);
+            .bgc(@base-bg-color);
+            .border(@base-color);
+            .mr(5px);
+        }
+    }
+}
+
+.lde-lengend {
+    .poa;
+    .pos-tr(@base-padding + @toolbarHeight,@panel-padding);
+    list-style: none;
+    .m;
+    .zi(100);
+    .border(@hoverBgColor);
+    .bra(4px);
+    .bgc(@lengendBgColor);
+    .p(20px);
+    .pb;
+    .tc;
+    .cl(@main-color);
+
+    > li {
+        .pb(20px);
+    }
+
+    .icon {
+        .size(24px,44px);
+        .bgs;
+        background-repeat: no-repeat;
+        .show(true);
+
+        &.powerCab {
+            background-image: url('@{imgPath}power-down.png');
+        }
+
+        &.netCab {
+            background-image: url("@{imgPath}net-down.png");
+        }
+
+        &.toggleCab {
+            background-image: url("@{imgPath}toggle-down.png");
+        }
+
+        &.lineCab {
+            background-image: url("@{imgPath}line-down.png");
+        }
+
+        &.cab {
+            background-image: url("@{imgPath}cab-down.png");
+        }
+
+        &.airCon {
+            background-image: url("@{imgPath}air-left.png");
+        }
+
+        &.devCab {
+            background-image: url("@{imgPath}cab-dev.png");
+        }
+
+        &.iondCab {
+            background-image: url("@{imgPath}cab-iond.png");
+        }
+
+        &.serverCab {
+            background-image: url("@{imgPath}cab-server.png");
+        }
+    }
+}
+
+.lde-tooltip {
+    .p(@panel-padding);
+    .w(400px);
+
+    > div {
+        .pb(@panel-padding);
+    }
+
+    > .title {
+        > span {
+            .cl;
+            .fs(@larger-font-size);
+        }
+
+        > a {
+            .fr;
+            .fs;
+            .td(underline);
+        }
+    }
+
+    > .rate {
+        .fs;
+        .oh;
+
+        .u {
+            .fr;
+        }
+    }
+
+    @bgColor: #002157;
+
+    .bar {
+        .show(true);
+        .size(100px,20px);
+        .bgc(@bgColor);
+        .va(top);
+        .m(0 @panel-padding);
+        .oh;
+
+        > .success {
+            .h;
+            .bgc(#40ed73);
+        }
+    }
+
+    .devices {
+        .w;
+        .fs;
+
+        thead {
+            .bgc(@bgColor);
+
+            th {
+                .p(5px);
+            }
+        }
+
+        > tbody {
+            tr:hover {
+                .bgc(@bgColor);
+            }
+
+            td {
+                .p(8px 5px);
+            }
+        }
+
+        .name {
+            .cl;
+            .show(true);
+            .w(120px);
+            .to;
+        }
+    }
+}
+
+.lde-editor-toolbar {
+    .h(@toolbarHeight);
+    .bgc(@lengendBgColor);
+    .border(@hoverBgColor);
+    .por;
+    z-index: 200;
+    list-style: none;
+    .m;
+    .p((@toolbarHeight - @eToolHeight)/2);
+
+    > li {
+        .show(true);
+        .mr(@panel-padding/2);
+
+        &.icon {
+            background-image: url("@{imgPath}toolbar.sprite.png");
+            .size(@eToolHeight,@eToolHeight);
+            .border(transparent);
+            .bra(4px);
+            .cursor;
+
+            &:hover {
+                .border(@hoverBgColor);
+            }
+
+            &.zoomIn {
+                .bgpy(-180px);
+            }
+
+            &.zoomOut {
+                .bgpy(-210px);
+            }
+
+            &.actualSize {
+                .bgpy(-803px);
+            }
+
+            &.undo {
+                .bgpy(-150px);
+            }
+
+            &.redo {
+                .bgpy(-120px);
+            }
+
+            &.del {
+                .bgpy(-30px);
+            }
+
+            &.save {
+                .bgpy(-240px);
+            }
+
+            &.clear {
+                .bgpy(-400px);
+            }
+
+            &.selectAll {
+                .bgpy(-520px);
+            }
+
+            &.restore {
+                .bgpy(-640px);
+            }
+        }
+
+        &.separator {
+            .size(1px);
+            .bgc(@hoverBgColor);
+        }
+
+        &.lde-editor-messagebar {
+            .fr;
+            .h(@eToolHeight);
+            .lh(@eToolHeight);
+            .hide;
+
+            > .icon {
+                background-image: url("@{imgPath}toolbar.sprite.png");
+                .show(true);
+                .size(20px,20px);
+                .bgp(-10px -559px);
+                .va;
+                .m(0 5px);
+
+                &.warn {
+                    .bgp(-10px -589px);
+                }
+
+                &.error {
+                    .bgp(-10px -619px);
+                }
+
+                &.info {
+                    .bgp(-10px -782px);
+                }
+            }
+        }
+    }
+}
+
+.lde-editor-toolbox {
+    .poa;
+    .pos-tl;
+    .size(300px);
+    z-index: 100;
+    .pt(@toolbarHeight);
+
+    > .lde-editor-box {
+        .bgc(@lengendBgColor);
+        .border(@hoverBgColor);
+        .h;
+        border-top-width: 0;
+        .por;
+        list-style: none;
+        .p;
+        .m;
+        .ofy;
+
+        > li {
+            .mb(5px);
+
+            &.selected {
+                .lde-editor-toolbox-title > .icon {
+                    .bgp(-10px -279px);
+                }
+
+                .lde-editor-toolbox-item {
+                    .show;
+                }
+            }
+        }
+    }
+
+    .toggle-icon {
+        @width: 20px;
+        @height: 40px;
+        background-image: url("@{imgPath}toolbar.sprite.png");
+        .size(@width, @height);
+        .poa;
+        .pos-tr(50%,@width * -1);
+        .mt(@height / 2 * -1);
+        .cursor;
+        .bgc(rgba(51, 122, 183, 0.4));
+        border-radius: 0 @height @height 0;
+        .bgpx(-6px);
+
+        &.left-hide {
+            .bgpy(-332px);
+        }
+
+        &.right-show {
+            .bgpy(-366px);
+            left: 0;
+        }
+
+        &.right-hide {
+            .bgp(-1px -366px);
+            left: @width * -1;
+            border-radius: @height 0 0 @height;
+        }
+
+        &.left-show {
+            .bgpy(-332px);
+            left: auto;
+            right: 0;
+        }
+    }
+}
+
+@toolbox-title-height: 40px;
+
+.lde-editor-toolbox-title {
+    background: url("@{imgPath}panel_bg.png") repeat center;
+    .fs(16px);
+    .p(10px);
+    .cursor;
+    .h(@toolbox-title-height);
+
+    > .icon {
+        background-image: url("@{imgPath}toolbar.sprite.png");
+        .show(true);
+        .size(20px,20px);
+        .bgp(-10px -309px);
+        .fr;
+    }
+}
+
+.lde-editor-toolbox-item {
+    .m;
+    .p(10px 5px 5px);
+    list-style: none;
+    .hide;
+
+    > li {
+        .show(true);
+        .pl(10px);
+        .va(top);
+
+        > img {
+            .w(24px);
+            .cursor(move);
+        }
+    }
+}
+
+.lde-editor-propbox:extend(.lde-editor-toolbox all) {
+    right: 0;
+    left: auto;
+
+    > .lde-editor-box {
+        .oh;
+    }
+}
+
+.mxPopupMenuIcon {
+    > .icon {
+        background-image: url("@{imgPath}toolbar.sprite.png");
+        .size(20px, 22px);
+
+        &.del {
+            .bgp(-8px -38px);
+        }
+
+        &.copy {
+            .bgp(-10px -439px);
+        }
+
+        &.paste {
+            .bgp(-10px -469px);
+        }
+
+        &.selectAll {
+            .bgp(-10px -529px);
+        }
+    }
+}
+
+.lde-editor-propbox-lab, .lde-editor-propbox-cab {
+    .h;
+    .por;
+}
+
+.lde-editor-propbox-title:extend(.lde-editor-toolbox-title) {
+    .cursor(default);
+    .poa;
+    .pos-tl;
+    .w;
+    .zi(200);
+}
+
+.lde-editor-propbox-body {
+    .poa;
+    .pos-tl;
+    .size;
+    .pt(@toolbox-title-height);
+    .zi(100);
+}
+
+.lde-editor-propbox-lab-list {
+    list-style: none;
+    .m;
+    .pl(10px);
+    .h;
+    .ofy(auto);
+    .tc;
+
+    > li {
+        .show(true);
+        .size(134px,100px);
+        .border(@hoverBgColor);
+        .m(10px 10px 0 0);
+        .tc;
+        .por;
+        .cursor;
+        .bsd(0 0 5px 1px fade(@hoverBgColor,30%));
+        .fl;
+
+        > .icon {
+            background: url("@{imgPath}toolbar.sprite.png") no-repeat;
+            .bgp(20px -679px);
+            .size(100%,60px);
+            .m(5px 0);
+        }
+
+        > .checked-icon {
+            .hide;
+            .poa;
+            .pos-tr(5px,5px);
+            background-image: url("@{imgPath}toolbar.sprite.png");
+            .bgp(-10px -559px);
+            .size(20px,20px);
+        }
+
+        &.selected {
+            > .checked-icon {
+                .show;
+            }
+
+            @bc: lighten(@hoverBgColor,5%);
+            .bgc(lighten(@lengendBgColor,5%));
+            .border(@bc);
+            .bsd(0 0 5px 1px fade(@bc,30%));
+        }
+
+        > .title {
+            .to;
+            .p(0 10px);
+        }
+    }
+}
+
+.lde-editor-propbox-cab-list {
+    .p;
+    .m;
+    list-style: none;
+    .h;
+    .oh;
+
+    > li {
+        .bt(@hoverBgColor);
+
+        &.selected {
+            .lde-editor-propbox-cab-item {
+                .show;
+            }
+
+            .lde-editor-propbox-cab-title > .icon {
+                .bgp(-10px -279px);
+            }
+        }
+    }
+}
+
+.lde-editor-propbox-cab-title:extend(.lde-editor-toolbox-title all) {
+    .h(34px);
+    .p(7px 10px);
+}
+
+.lde-editor-propbox-cab-item:extend(.lde-editor-propbox-lab-list all) {
+    .hide;
+    .maxh(500px);
+    .pb(10px);
+
+    > li {
+        .size(62px,50px);
+
+        > .icon {
+            background: url("@{imgPath}toolbar.sprite.png") no-repeat;
+            .bgp(10px -749px);
+            .h(23px);
+            .m(5px 0 1px 0);
+        }
+    }
+}
+
+.lde-designer-modal-mask {
+    .pof;
+    .size;
+    .pos-tl;
+    .bgc( rgba(0, 0, 0, 0.3));
+    .zi(1000);
+}
+
+@bc: #026291;
+
+.lde-designer-modal {
+    .w(400px);
+    .h(150px);
+    .poa;
+    .pos-tl(50%,50%);
+    .transform(translate(-50%,-50%));
+    .bgc(fade(@bc,90%));
+    .border(@bc);
+    .bsd(0 0 5px 1px fade(@base-color,30%));
+}
+
+.lde-designer-modal-close {
+    .bgp(-10px -619px);
+    .fs(25px);
+    .lh(25px);
+    .poa;
+    .pos-tr;
+    .cursor;
+
+    &:hover {
+        .cl(lighten(@base-color,20%));
+    }
+}
+
+.lde-designer-modal-body {
+    .h;
+    .p(25px);
+    .por;
+}
+
+.lde-designer-modal-messager {
+    .tc;
+}
+
+.lde-designer-modal-buttons {
+    .tc;
+    .p(@base-padding 0);
+    .poa;
+    .pos-bl;
+    .w;
+
+    > button {
+        .m(0 10px);
+        .bgc(fade(@bc,90%));
+        .border(@base-color);
+        .p(2px @base-padding);
+        outline: none;
+
+        &:hover {
+            .bgc(#013b5d);
+        }
+    }
+}
+
+.lde-printer {
+    .poa;
+    .pos-tr(30px,50%);
+    .transform(translateX(50%));
+}
