@@ -1,0 +1,379 @@
+@import "variables";
+
+// Background
+.bgi(@name, @repeat: no-repeat, @position: center) {
+    background-image: url("@{image-path}@{name}");
+    background-repeat: @repeat;
+    background-position: @position;
+}
+
+.bi(@name) {
+    background-image: url("@{image-path}@{name}");
+}
+
+.nobg() {
+    background: none;
+}
+
+.bgc(@color: @bg-color) {
+    background-color: @color;
+}
+
+.bgs(@size: @bg-size) {
+    background-size: @size;
+}
+
+.bgp(@value: @bg-position) {
+    background-position: @value;
+}
+
+.bgpx(@value: @bg-position) {
+    background-position-x: @value;
+}
+
+.bgpy(@value: @bg-position) {
+    background-position-y: @value;
+}
+
+// Border
+.border(@color,@width: @border-width,@style: @border-style) when (iscolor(@color)) {
+    border: @arguments;
+}
+
+.border(@border) when (default()) {
+    border: @border;
+}
+
+.bt(@color,@width: @border-width,@style: @border-style) {
+    border-top: @arguments;
+}
+
+.bb(@color,@width: @border-width,@style: @border-style) {
+    border-bottom: @arguments;
+}
+
+.bl(@color,@width: @border-width,@style: @border-style) {
+    border-left: @arguments;
+}
+
+.br(@color,@width: @border-width,@style: @border-style) {
+    border-right: @arguments;
+}
+
+.bc(@color: @border-color) {
+    border-color: @color;
+}
+
+// Border radius
+.bra(@width: @border-radius) {
+    border-radius: @width;
+}
+
+// Box sizing
+.bs(@size: @box-sizing) {
+    box-sizing: @size;
+}
+
+// Box shadow
+.bsd(@style: @box-shadow) {
+    box-shadow: @style;
+}
+
+// Center align
+.center() {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Clearfix
+.clearfix() {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+// Font color
+.cl(@color: @font-color) {
+    color: @color;
+}
+
+// Cursor
+.cursor(@cur: pointer) {
+    cursor: @cur;
+}
+
+// Fill
+.fill() {
+    display: block;
+    .size;
+}
+
+// Float left
+.fl() {
+    float: left;
+}
+
+// Float right
+.fr() {
+    float: right;
+}
+
+// Font size
+.fs(@size: @font-size) {
+    font-size: @size;
+}
+
+// Font weight
+.fw(@weight: normal) {
+    font-weight: @weight;
+}
+
+// Font family
+.fm(@font: @font-family) {
+    font-family: @font;
+}
+
+// Margin
+.m(@margin: 0) {
+    margin: @margin;
+}
+
+// Margin left
+.ml(@num: 0) {
+    margin-left: @num;
+}
+
+// Margin right
+.mr(@num: 0) {
+    margin-right: @num;
+}
+
+// Margin top
+.mt(@num: 0) {
+    margin-top: @num;
+}
+
+// Margin bottom
+.mb(@num: 0) {
+    margin-bottom: @num;
+}
+
+// Opacity
+.opacity(@opacity: 0) {
+    opacity: @opacity;
+    // IE8 filter
+    @opacity-ie: (@opacity * 100);
+    filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+// Overflow
+.of(@style: auto) {
+    overflow: @style;
+}
+
+.ofx(@style: auto) {
+    overflow-x: @style;
+}
+
+.ofy(@style: auto) {
+    overflow-y: @style;
+}
+
+.oh() {
+    .of(hidden);
+}
+
+// Overflow style
+.os(@style: scrollbar) {
+    -ms-overflow-style: @style;
+}
+
+// Outline
+.ol(@style: none) {
+    outline: @style;
+}
+
+//Padding
+.p(@padding: 0) {
+    padding: @padding;
+}
+
+// Padding left
+.pl(@num: 0) {
+    padding-left: @num;
+}
+
+// Padding right
+.pr(@num: 0) {
+    padding-right: @num;
+}
+
+// Padding top
+.pt(@num: 0) {
+    padding-top: @num;
+}
+
+// Padding bottom
+.pb(@num: 0) {
+    padding-bottom: @num;
+}
+
+// Position
+.poa() {
+    position: absolute;
+}
+
+.por() {
+    position: relative;
+}
+
+.pof() {
+    position: fixed;
+}
+
+.pos-tl(@top: 0,@left: 0) {
+    top: @top;
+    left: @left;
+}
+
+.pos-tr(@top: 0,@right: 0) {
+    top: @top;
+    right: @right;
+}
+
+.pos-bl(@bottom: 0,@left: 0) {
+    bottom: @bottom;
+    left: @left;
+}
+
+.pos-br(@bottom: 0,@right: 0) {
+    bottom: @bottom;
+    right: @right;
+}
+
+// Size
+.h(@height: @full-size) {
+    height: @height;
+}
+
+.minh(@height: @full-size) {
+    min-height: @height;
+}
+
+.maxh(@height: @full-size) {
+    max-height: @height;
+}
+
+.w(@width: @full-size) {
+    width: @width;
+}
+
+.minw(@width: @full-size) {
+    min-width: @width;
+}
+
+.maxw(@width: @full-size) {
+    max-width: @width;
+}
+
+.size(@width: @full-size,@height: @full-size) {
+    width: @width;
+    height: @height;
+}
+
+.lh(@height: @full-size) {
+    line-height: @height;
+}
+
+.ls(@style: none) {
+    list-style: @style;
+}
+
+// Display
+.show() {
+    display: block;
+}
+
+.show(@inline) when (@inline=true) {
+    display: inline-block;
+}
+
+.hide() {
+    display: none;
+}
+
+// Text align left
+.tl() {
+    text-align: left;
+}
+
+// Text align center
+.tc() {
+    text-align: center;
+}
+
+// Text align right
+.tr() {
+    text-align: right;
+}
+
+// Text overflow
+.to() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Table
+.tb() {
+    .size;
+    table-layout: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    .bs;
+}
+
+// Text decoration
+.td(@value: none) {
+    text-decoration: @value;
+}
+
+// Vertical align
+.va(@align: middle) {
+    vertical-align: @align;
+}
+
+// Transition
+.transition(@transition: @transition) {
+    transition: @transition;
+}
+
+// Animation
+.animation(@animation) {
+    -webkit-animation: @animation;
+    animation: @animation;
+}
+
+// Transform
+.transform(@transform) {
+    -webkit-transform: @transform;
+    -ms-transform: @transform;
+    transform: @transform;
+}
+
+// Z-index
+.zi(@index) {
+    z-index: @index;
+}
+
+// Word wrap
+.ww(@wrap: @word-wrap) {
+    word-wrap: @wrap;
+}

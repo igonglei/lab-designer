@@ -1,49 +1,9 @@
-﻿@import "../../../less/common.less";
-
-@panel-padding: 10px;
-@base-bg-color: #001245;
-@hoverBgColor: #07437e;
-@bgColor: fade(@hoverBgColor,90%);
-@imgPath: '../images/';
-@toolbarHeight: 50px;
-@lengendBgColor: rgba(0,33,87,.8);
-@eToolHeight: 40px;
-@main-color: #0af;
-
-div.mxPopupMenu {
-    .nobg;
-    .bgc(@bgColor);
-    .bc(@panel-border-color);
-    .bsd(@base-box-shadow);
-
-    tr.mxPopupMenuItem {
-        .cl;
-    }
-
-    tr.mxPopupMenuItemHover {
-        .bgc(@hoverBgColor);
-    }
-
-    td.mxPopupMenuIcon {
-        .bgc(transparent);
-    }
-
-    td.mxPopupMenuItem {
-        .pr(@base-padding);
-        .fm;
-    }
-}
-
-div.mxTooltip {
-    .bgc(@bgColor);
-    .bc(@base-color);
-    .cl(@base-color);
-    .bsd(@base-box-shadow);
-    .fm;
-}
+﻿@import "mixins";
 
 .labDesigner {
-    background: radial-gradient(circle farthest-side,#0074a5 20%,#026392 40%,@base-bg-color 100%);
+    @sc: #0074a5;
+    background: radial-gradient(circle farthest-side, @sc 20%, #026392 40%, @lab-bg-color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@sc, endColorstr=@lab-bg-color, GradientType='1');
     .size;
     .por;
     .bra(4px);
@@ -54,7 +14,7 @@ div.mxTooltip {
 }
 
 .lde-toolbar {
-    .size(100%,@toolbarHeight);
+    .size(100%, @lab-toolbarHeight);
     .por;
 }
 
@@ -63,15 +23,15 @@ div.mxTooltip {
     .pos-tr;
     list-style: none;
     .m;
-    .pt(@panel-padding);
+    .pt(@lab-panel-padding);
     .zi(100);
-    .pr(@panel-padding);
+    .pr(@lab-panel-padding);
 
-    > li {
+    >li {
         .show(true);
-        background-image: url("@{imgPath}toolbar.sprite.png");
-        .size(38px,26px);
-        .ml(@panel-padding/2);
+        .bi(@lab-image-toolbar);
+        .size(38px, 26px);
+        .ml(@lab-panel-padding/2);
         .border(#003283);
         .bra(4px);
         .bgc(#002157);
@@ -118,19 +78,19 @@ div.mxTooltip {
 .lde-tip:extend(.lde-tools) {
     right: 300px;
 
-    > li {
+    >li {
         .show(true);
-        .pl(@panel-padding);
-        .fs(@large-font-size);
+        .pl(@lab-panel-padding);
+        .fs(@font-size-large);
         .cl;
 
-        > span {
+        >span {
             .va;
         }
 
         .icon {
             .show(true);
-            .size(25px,15px);
+            .size(25px, 15px);
             .bra(5px);
             .mr(5px);
         }
@@ -149,9 +109,9 @@ div.mxTooltip {
 
         .title {
             .show(true);
-            .size(20px,20px);
-            .bgc(@base-bg-color);
-            .border(@base-color);
+            .size(20px, 20px);
+            .bgc(@lab-bg-color);
+            .border(@lab-main-color);
             .mr(5px);
         }
     }
@@ -159,88 +119,97 @@ div.mxTooltip {
 
 .lde-lengend {
     .poa;
-    .pos-tr(@base-padding + @toolbarHeight,@panel-padding);
+    .pos-tr(@padding + @lab-toolbarHeight, @lab-panel-padding);
     list-style: none;
     .m;
     .zi(100);
-    .border(@hoverBgColor);
+    .border(@lab-hoverBgColor);
     .bra(4px);
-    .bgc(@lengendBgColor);
+    .bgc(@lab-lengendBgColor);
     .p(20px);
     .pb;
     .tc;
-    .cl(@main-color);
+    .cl(@lab-main-color);
 
-    > li {
+    >li {
         .pb(20px);
     }
 
     .icon {
-        .size(24px,44px);
+        .size(24px, 44px);
         .bgs;
         background-repeat: no-repeat;
         .show(true);
 
         &.powerCab {
-            background-image: url('@{imgPath}power-down.png');
+            .bi("power-down.png");
         }
 
         &.netCab {
-            background-image: url("@{imgPath}net-down.png");
+            .bi("net-down.png");
         }
 
         &.toggleCab {
-            background-image: url("@{imgPath}toggle-down.png");
+            .bi("toggle-down.png");
         }
 
         &.lineCab {
-            background-image: url("@{imgPath}line-down.png");
+            .bi("line-down.png");
         }
 
         &.cab {
-            background-image: url("@{imgPath}cab-down.png");
+            .bi("cab-down.png");
         }
 
         &.airCon {
-            background-image: url("@{imgPath}air-left.png");
+            .bi("air-left.png");
         }
 
         &.devCab {
-            background-image: url("@{imgPath}cab-dev.png");
+            .bi("cab-dev.png");
         }
 
         &.iondCab {
-            background-image: url("@{imgPath}cab-iond.png");
+            .bi("cab-iond.png");
         }
 
         &.serverCab {
-            background-image: url("@{imgPath}cab-server.png");
+            .bi("cab-server.png");
         }
     }
 }
 
 .lde-tooltip {
-    .p(@panel-padding);
+    .p(@lab-panel-padding);
     .w(400px);
 
-    > div {
-        .pb(@panel-padding);
+    >div {
+        .pb(@lab-panel-padding);
     }
 
-    > .title {
-        > span {
+    >.title {
+        >span {
             .cl;
-            .fs(@larger-font-size);
+            .fs(@font-size-larger);
         }
 
-        > a {
+        >a {
             .fr;
             .fs;
             .td(underline);
+            .cl(@lab-main-color);
+
+            &:hover {
+                .cl(darken(@lab-main-color,10%));
+            }
+
+            &:focus {
+                .ol;
+            }
         }
     }
 
-    > .rate {
+    >.rate {
         .fs;
         .oh;
 
@@ -253,13 +222,13 @@ div.mxTooltip {
 
     .bar {
         .show(true);
-        .size(100px,20px);
+        .size(100px, 20px);
         .bgc(@bgColor);
         .va(top);
-        .m(0 @panel-padding);
+        .m(0 @lab-panel-padding);
         .oh;
 
-        > .success {
+        >.success {
             .h;
             .bgc(#40ed73);
         }
@@ -277,7 +246,7 @@ div.mxTooltip {
             }
         }
 
-        > tbody {
+        >tbody {
             tr:hover {
                 .bgc(@bgColor);
             }
@@ -297,28 +266,28 @@ div.mxTooltip {
 }
 
 .lde-editor-toolbar {
-    .h(@toolbarHeight);
-    .bgc(@lengendBgColor);
-    .border(@hoverBgColor);
+    .h(@lab-toolbarHeight);
+    .bgc(@lab-lengendBgColor);
+    .border(@lab-hoverBgColor);
     .por;
     z-index: 200;
     list-style: none;
     .m;
-    .p((@toolbarHeight - @eToolHeight)/2);
+    .p((@lab-toolbarHeight - @lab-eToolHeight)/2);
 
-    > li {
+    >li {
         .show(true);
-        .mr(@panel-padding/2);
+        .mr(@lab-panel-padding/2);
 
         &.icon {
-            background-image: url("@{imgPath}toolbar.sprite.png");
-            .size(@eToolHeight,@eToolHeight);
+            .bi(@lab-image-toolbar);
+            .size(@lab-eToolHeight, @lab-eToolHeight);
             .border(transparent);
             .bra(4px);
             .cursor;
 
             &:hover {
-                .border(@hoverBgColor);
+                .border(@lab-hoverBgColor);
             }
 
             &.zoomIn {
@@ -364,19 +333,19 @@ div.mxTooltip {
 
         &.separator {
             .size(1px);
-            .bgc(@hoverBgColor);
+            .bgc(@lab-hoverBgColor);
         }
 
         &.lde-editor-messagebar {
             .fr;
-            .h(@eToolHeight);
-            .lh(@eToolHeight);
+            .h(@lab-eToolHeight);
+            .lh(@lab-eToolHeight);
             .hide;
 
-            > .icon {
-                background-image: url("@{imgPath}toolbar.sprite.png");
+            >.icon {
+                .bi(@lab-image-toolbar);
                 .show(true);
-                .size(20px,20px);
+                .size(20px, 20px);
                 .bgp(-10px -559px);
                 .va;
                 .m(0 5px);
@@ -402,11 +371,11 @@ div.mxTooltip {
     .pos-tl;
     .size(300px);
     z-index: 100;
-    .pt(@toolbarHeight);
+    .pt(@lab-toolbarHeight);
 
-    > .lde-editor-box {
-        .bgc(@lengendBgColor);
-        .border(@hoverBgColor);
+    >.lde-editor-box {
+        .bgc(@lab-lengendBgColor);
+        .border(@lab-hoverBgColor);
         .h;
         border-top-width: 0;
         .por;
@@ -415,11 +384,11 @@ div.mxTooltip {
         .m;
         .ofy;
 
-        > li {
+        >li {
             .mb(5px);
 
             &.selected {
-                .lde-editor-toolbox-title > .icon {
+                .lde-editor-toolbox-title>.icon {
                     .bgp(-10px -279px);
                 }
 
@@ -433,10 +402,10 @@ div.mxTooltip {
     .toggle-icon {
         @width: 20px;
         @height: 40px;
-        background-image: url("@{imgPath}toolbar.sprite.png");
+        .bi(@lab-image-toolbar);
         .size(@width, @height);
         .poa;
-        .pos-tr(50%,@width * -1);
+        .pos-tr(50%, @width * -1);
         .mt(@height / 2 * -1);
         .cursor;
         .bgc(rgba(51, 122, 183, 0.4));
@@ -469,16 +438,16 @@ div.mxTooltip {
 @toolbox-title-height: 40px;
 
 .lde-editor-toolbox-title {
-    background: url("@{imgPath}panel_bg.png") repeat center;
-    .fs(16px);
+    .bgi("panel_bg.png", repeat);
+    .fs(@font-size-large);
     .p(10px);
     .cursor;
     .h(@toolbox-title-height);
 
-    > .icon {
-        background-image: url("@{imgPath}toolbar.sprite.png");
+    >.icon {
+        .bi(@lab-image-toolbar);
         .show(true);
-        .size(20px,20px);
+        .size(20px, 20px);
         .bgp(-10px -309px);
         .fr;
     }
@@ -490,12 +459,12 @@ div.mxTooltip {
     list-style: none;
     .hide;
 
-    > li {
+    >li {
         .show(true);
         .pl(10px);
         .va(top);
 
-        > img {
+        >img {
             .w(24px);
             .cursor(move);
         }
@@ -506,14 +475,14 @@ div.mxTooltip {
     right: 0;
     left: auto;
 
-    > .lde-editor-box {
+    >.lde-editor-box {
         .oh;
     }
 }
 
 .mxPopupMenuIcon {
-    > .icon {
-        background-image: url("@{imgPath}toolbar.sprite.png");
+    >.icon {
+        .bi(@lab-image-toolbar);
         .size(20px, 22px);
 
         &.del {
@@ -534,7 +503,8 @@ div.mxTooltip {
     }
 }
 
-.lde-editor-propbox-lab, .lde-editor-propbox-cab {
+.lde-editor-propbox-lab,
+.lde-editor-propbox-cab {
     .h;
     .por;
 }
@@ -563,45 +533,45 @@ div.mxTooltip {
     .ofy(auto);
     .tc;
 
-    > li {
+    >li {
         .show(true);
-        .size(134px,100px);
-        .border(@hoverBgColor);
+        .size(134px, 100px);
+        .border(@lab-hoverBgColor);
         .m(10px 10px 0 0);
         .tc;
         .por;
         .cursor;
-        .bsd(0 0 5px 1px fade(@hoverBgColor,30%));
+        .bsd(0 0 5px 1px fade(@lab-hoverBgColor, 30%));
         .fl;
 
-        > .icon {
-            background: url("@{imgPath}toolbar.sprite.png") no-repeat;
+        >.icon {
+            .bi(@lab-image-toolbar);
             .bgp(20px -679px);
             .size(100%,60px);
             .m(5px 0);
         }
 
-        > .checked-icon {
+        >.checked-icon {
             .hide;
             .poa;
             .pos-tr(5px,5px);
-            background-image: url("@{imgPath}toolbar.sprite.png");
+            .bi(@lab-image-toolbar);
             .bgp(-10px -559px);
             .size(20px,20px);
         }
 
         &.selected {
-            > .checked-icon {
+            >.checked-icon {
                 .show;
             }
 
-            @bc: lighten(@hoverBgColor,5%);
-            .bgc(lighten(@lengendBgColor,5%));
+            @bc: lighten(@lab-hoverBgColor, 5%);
+            .bgc(lighten(@lab-lengendBgColor, 5%));
             .border(@bc);
-            .bsd(0 0 5px 1px fade(@bc,30%));
+            .bsd(0 0 5px 1px fade(@bc, 30%));
         }
 
-        > .title {
+        >.title {
             .to;
             .p(0 10px);
         }
@@ -615,15 +585,15 @@ div.mxTooltip {
     .h;
     .oh;
 
-    > li {
-        .bt(@hoverBgColor);
+    >li {
+        .bt(@lab-hoverBgColor);
 
         &.selected {
             .lde-editor-propbox-cab-item {
                 .show;
             }
 
-            .lde-editor-propbox-cab-title > .icon {
+            .lde-editor-propbox-cab-title>.icon {
                 .bgp(-10px -279px);
             }
         }
@@ -640,11 +610,11 @@ div.mxTooltip {
     .maxh(500px);
     .pb(10px);
 
-    > li {
-        .size(62px,50px);
+    >li {
+        .size(62px, 50px);
 
-        > .icon {
-            background: url("@{imgPath}toolbar.sprite.png") no-repeat;
+        >.icon {
+            .bi(@lab-image-toolbar);
             .bgp(10px -749px);
             .h(23px);
             .m(5px 0 1px 0);
@@ -670,7 +640,7 @@ div.mxTooltip {
     .transform(translate(-50%,-50%));
     .bgc(fade(@bc,90%));
     .border(@bc);
-    .bsd(0 0 5px 1px fade(@base-color,30%));
+    .bsd(0 0 5px 1px fade(@lab-main-color, 30%));
 }
 
 .lde-designer-modal-close {
@@ -682,7 +652,7 @@ div.mxTooltip {
     .cursor;
 
     &:hover {
-        .cl(lighten(@base-color,20%));
+        .cl(lighten(@lab-main-color, 20%));
     }
 }
 
@@ -698,16 +668,16 @@ div.mxTooltip {
 
 .lde-designer-modal-buttons {
     .tc;
-    .p(@base-padding 0);
+    .p(@padding 0);
     .poa;
     .pos-bl;
     .w;
 
-    > button {
+    >button {
         .m(0 10px);
-        .bgc(fade(@bc,90%));
-        .border(@base-color);
-        .p(2px @base-padding);
+        .bgc(fade(@bc, 90%));
+        .border(@lab-main-color);
+        .p(2px @padding);
         outline: none;
 
         &:hover {
@@ -720,4 +690,38 @@ div.mxTooltip {
     .poa;
     .pos-tr(30px,50%);
     .transform(translateX(50%));
+}
+
+.lab {
+    >div.mxPopupMenu {
+        .nobg;
+        .bgc(@lab-mx-bgColor);
+        .bc(@lab-hoverBgColor);
+        .bsd(@box-shadow);
+
+        tr.mxPopupMenuItem {
+            .cl;
+        }
+
+        tr.mxPopupMenuItemHover {
+            .bgc(@lab-hoverBgColor);
+        }
+
+        td.mxPopupMenuIcon {
+            .bgc(transparent);
+        }
+
+        td.mxPopupMenuItem {
+            .pr(@padding);
+            .fm;
+        }
+    }
+
+    >div.mxTooltip {
+        .bgc(@lab-mx-bgColor);
+        .bc(@lab-main-color);
+        .cl(@lab-main-color);
+        .bsd(@box-shadow);
+        .fm;
+    }
 }
