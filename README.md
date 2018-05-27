@@ -1,5 +1,7 @@
 # 实验室设计器
 
+> 基于mxGraph的可视化实验室设计器
+
 ## 预览
 
 ### [在线预览](https://igonglei.github.io/clean-ui/lab.html)
