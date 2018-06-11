@@ -427,6 +427,7 @@
             width: 44
         }], //样式
         classList = {
+            body: "lde-body",
             container: "labDesigner",
             toolbar: "lde-toolbar",
             designer: "lde-designer",
@@ -707,6 +708,7 @@
                     $el = $(instance.dom).empty(),
                     $designer = $('<div class="' + classList.designer + '"></div>').appendTo($el);
                 graph.init($designer[0]);
+                $(document.body).addClass(classList.body);
                 $el.addClass(classList.container);
                 graph.labelsVisible = false;
                 graph.cellsEditable = false;

@@ -614,26 +614,26 @@
   -ms-transform: translateX(50%);
   transform: translateX(50%);
 }
-.lab > div.mxPopupMenu {
+.lde-body > div.mxPopupMenu {
   background: none;
   background-color: rgba(7, 67, 126, 0.9);
   border-color: #07437e;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
 }
-.lab > div.mxPopupMenu tr.mxPopupMenuItem {
+.lde-body > div.mxPopupMenu tr.mxPopupMenuItem {
   color: #fff;
 }
-.lab > div.mxPopupMenu tr.mxPopupMenuItemHover {
+.lde-body > div.mxPopupMenu tr.mxPopupMenuItemHover {
   background-color: #07437e;
 }
-.lab > div.mxPopupMenu td.mxPopupMenuIcon {
+.lde-body > div.mxPopupMenu td.mxPopupMenuIcon {
   background-color: transparent;
 }
-.lab > div.mxPopupMenu td.mxPopupMenuItem {
+.lde-body > div.mxPopupMenu td.mxPopupMenuItem {
   padding-right: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
-.lab > div.mxTooltip {
+.lde-body > div.mxTooltip {
   background-color: rgba(7, 67, 126, 0.9);
   border-color: #0af;
   color: #0af;
