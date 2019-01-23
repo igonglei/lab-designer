@@ -131,19 +131,19 @@
                 allU: 80
             }, {
                 no: "A5",
-                usedU: 0,
+                usedU: 18,
                 allU: 80
             }, {
                 no: "A6",
-                usedU: 0,
+                usedU: 31,
                 allU: 80
             }, {
                 no: "A7",
-                usedU: 36,
+                usedU: 26,
                 allU: 80
             }, {
                 no: "A8",
-                usedU: 36,
+                usedU: 46,
                 allU: 80
             }, {
                 no: "A9",
@@ -155,7 +155,7 @@
                 allU: 80
             }, {
                 no: "A11",
-                usedU: 69,
+                usedU: 58,
                 allU: 80
             }, {
                 no: "A12",
@@ -163,11 +163,11 @@
                 allU: 80
             }, {
                 no: "A13",
-                usedU: 69,
+                usedU: 39,
                 allU: 80
             }, {
                 no: "A14",
-                usedU: 51,
+                usedU: 71,
                 allU: 80
             }],
             //更新已用机柜数
@@ -1184,9 +1184,9 @@
                             target: target
                         };
                     self.getCabInfo(instance, value.name, cell.style).done(function(data) {
-                        var cabInfo = instance.cabInfo,
-                            devices = cabInfo.deviceList,
-                            cabInfo = cabInfo.uNum[0] || {
+                        var cabInfoData = instance.cabInfo,
+                            devices = cabInfoData.deviceList,
+                            cabInfo = cabInfoData.uNum[0] || {
                                 allU: 0,
                                 usedU: 0
                             },
@@ -1614,8 +1614,12 @@
                     IsSpcCab = cabType === "cab-dev" || cabType === "cab-iond" || cabType === "cab-server";
                 //是否是特殊机柜（U位占用率为百分百）
                 if (!url) {
-                    return $.ajax().done(function(data) {
-                        instance.cabInfo = opts.fakeCabInfo;
+                    return $.ajax().done(function (data) {
+                        var fakeCabInfo = opts.fakeCabInfo;
+                        fakeCabInfo.uNum = $.grep(opts.fakeCabUCount, function(n) {
+                            return n.no === cabNo;
+                        });
+                        instance.cabInfo = fakeCabInfo;
                     });
                 }
                 return $.get(url, {
